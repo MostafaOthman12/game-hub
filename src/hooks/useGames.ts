@@ -2,9 +2,10 @@ import { CanceledError } from "axios";
 import { useEffect, useState } from "react";
 import apiClient from "../Services/api-client";
 
-interface Game {
+export interface Game {
   id: number;
   name: string;
+  background_image: string;
 }
 interface FetchGamesResponse {
   count: number;
