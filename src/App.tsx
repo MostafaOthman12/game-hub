@@ -15,7 +15,9 @@ function App() {
         <NavBar></NavBar>
       </GridItem>
       <Show above="lg">
-        <GenreList />
+        <GridItem area={"aside"} paddingX={"10px"} alignItems={"flex-start"}>
+          <GenreList />
+        </GridItem>
       </Show>
       <GridItem area={"main"}>
         <GameGrid />

@@ -6,6 +6,18 @@ import { GameCardSkeleton } from "./GameCardSkeleton";
 export const GameGrid = () => {
   const { data, error, isLoading } = useGames();
   const skeltons = [1, 2, 3, 4, 5, 6];
+  if (isLoading)
+    return (
+      <SimpleGrid
+        columns={{ sm: 1, md: 2, lg: 3, xl: 5 }}
+        spacing={2}
+        padding={7}
+      >
+        {skeltons.map((game) => (
+          <GameCardSkeleton />
+        ))}
+      </SimpleGrid>
+    );
   return (
     <div>
       {error && <Text>{error}</Text>}
@@ -14,8 +26,6 @@ export const GameGrid = () => {
         spacing={2}
         padding={7}
       >
-        {isLoading &&
-          skeltons.map((skelton) => <GameCardSkeleton key={skelton} />)}
         {data.map((game) => (
           <GameCard key={game.id} game={game} />
         ))}
