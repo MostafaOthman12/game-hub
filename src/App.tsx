@@ -12,6 +12,7 @@ export interface GameQurey {
   genre: Genre | null;
   platform: Platform | null;
   ordering: string | "";
+  search: string | "";
 }
 
 function App() {
@@ -26,6 +27,9 @@ function App() {
   const onSelectSortBy = (ordering: string) => {
     setGameQuery({ ...gameQurey, ordering });
   };
+  const onSearch = (searchQuery: string | "") => {
+    setGameQuery({ ...gameQurey, search: searchQuery });
+  };
   return (
     <Grid
       templateAreas={{
@@ -34,7 +38,7 @@ function App() {
       }}
     >
       <GridItem area={"nav"}>
-        <NavBar />
+        <NavBar onSearch={(searchQuery) => onSearch(searchQuery)} />
       </GridItem>
       <Show above="lg">
         <GridItem area={"aside"} paddingX={"10px"} alignItems={"flex-start"}>
