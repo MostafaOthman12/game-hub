@@ -14,6 +14,7 @@ export interface GameQurey {
   platform: Platform | null;
   ordering: string | "";
   search: string | "";
+  pageParam: number;
 }
 
 function App() {
@@ -57,6 +58,7 @@ function App() {
               selectedPlatform={gameQurey.platform}
               onSelect={(platform) => onSelectPlatform(platform)}
             />
+
             <SortSelector
               sorOrder={gameQurey.ordering}
               onSelect={(ordering) => onSelectSortBy(ordering)}
