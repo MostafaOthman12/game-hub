@@ -1,8 +1,7 @@
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
-import { all, AxiosError } from "axios";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import { GameQurey } from "../App";
 import APIClient, { FetchResponse } from "../Services/api-client";
-import { Platform } from "./usePlatform";
+import { Platform } from "./usePlatforms";
 
 export interface Game {
   id: number;
@@ -19,8 +18,8 @@ const useGames = (gameQuery: GameQurey) =>
     queryFn: ({ pageParam = 1 }) =>
       apiClient.getAll({
         params: {
-          genres: gameQuery.genre?.id,
-          platforms: gameQuery.platform?.id,
+          genres: gameQuery.genreId,
+          platforms: gameQuery.platformId,
           ordering: gameQuery.ordering,
           search: gameQuery.search,
           page: pageParam,

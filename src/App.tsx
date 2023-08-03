@@ -4,14 +4,12 @@ import { GameGrid } from "./components/GameGrid";
 import { GenreList } from "./components/GenreList";
 import { NavBar } from "./components/NavBar";
 import { PlatformSelector } from "./components/PlatformSelector";
-import { Platform } from "./hooks/usePlatform";
-import { Genre } from "./hooks/useGenres";
 import { SortSelector } from "./components/SortSelector";
 import { GameHeading } from "./components/GameHeading";
 
 export interface GameQurey {
-  genre: Genre | null;
-  platform: Platform | null;
+  genreId: number;
+  platformId: number;
   ordering: string | "";
   search: string | "";
   pageParam: number;
@@ -20,11 +18,11 @@ export interface GameQurey {
 function App() {
   const [gameQurey, setGameQuery] = useState<GameQurey>({} as GameQurey);
 
-  const onSelectGenre = (genre: Genre) => {
-    setGameQuery({ ...gameQurey, genre });
+  const onSelectGenre = (genreId: number) => {
+    setGameQuery({ ...gameQurey, genreId });
   };
-  const onSelectPlatform = (platform: Platform) => {
-    setGameQuery({ ...gameQurey, platform });
+  const onSelectPlatform = (platformId: number) => {
+    setGameQuery({ ...gameQurey, platformId });
   };
   const onSelectSortBy = (ordering: string) => {
     setGameQuery({ ...gameQurey, ordering });
@@ -45,8 +43,8 @@ function App() {
       <Show above="lg">
         <GridItem area={"aside"} paddingX={"10px"} alignItems={"flex-start"}>
           <GenreList
-            selectedGenre={gameQurey.genre}
-            onSelect={(genre) => onSelectGenre(genre)}
+            selectedGenre={gameQurey.genreId}
+            onSelect={(genreId: number) => onSelectGenre(genreId)}
           />
         </GridItem>
       </Show>
@@ -55,8 +53,8 @@ function App() {
           <GameHeading gameQuery={gameQurey} />
           <HStack>
             <PlatformSelector
-              selectedPlatform={gameQurey.platform}
-              onSelect={(platform) => onSelectPlatform(platform)}
+              selectedPlatform={gameQurey.platformId}
+              onSelect={(platformId) => onSelectPlatform(platformId)}
             />
 
             <SortSelector

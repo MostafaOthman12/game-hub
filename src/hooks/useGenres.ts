@@ -8,7 +8,7 @@ export interface Genre {
   game_count: number;
   image_background: string;
 }
-const apiClient = new APIClient<Genre>("/genres");
+export const apiClient = new APIClient<Genre>("/genres");
 
 const useGenres = () =>
   useQuery(["genres"], {
