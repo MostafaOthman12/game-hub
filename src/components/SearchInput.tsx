@@ -1,16 +1,16 @@
 import { InputGroup, Input, InputLeftElement } from "@chakra-ui/react";
 import { BsSearch } from "react-icons/bs";
+import useGameQueryStore from "../GameStore";
 
-interface Props {
-  onSearch: (searchQuery: string | "") => void;
-}
-export const SearchInput = ({ onSearch }: Props) => {
+export const SearchInput = () => {
+  const setSearch = useGameQueryStore((s) => s.onSearch);
+
   return (
     <InputGroup>
       <InputLeftElement children={<BsSearch />} />
       <Input
         onChange={(e) => {
-          onSearch(e.target.value);
+          setSearch(e.target.value);
         }}
         variant={"outline"}
         borderRadius={25}
