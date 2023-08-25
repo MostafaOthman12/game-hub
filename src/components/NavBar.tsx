@@ -9,7 +9,7 @@ export const NavBar = () => {
     <HStack padding={"10px"} justifyContent={"space-between"}>
       <Link to={"/"}>
         {" "}
-        <Image src={logo} boxSize={"60px"} />
+        <Image objectFit={"cover"} src={logo} boxSize={"60px"} />
       </Link>
       <SearchInput />
       <ColorModeSwitch />

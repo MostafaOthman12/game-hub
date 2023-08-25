@@ -11,7 +11,7 @@ export const GameScreenshots = ({ gameId }: Props) => {
   return screenshots ? (
     <SimpleGrid columns={{ sm: 1, md: 2 }} spacing="6">
       {screenshots.results.map((s) => (
-        <img src={s.image} />
+        <img key={s.id} src={s.image} />
       ))}
     </SimpleGrid>
   ) : null;
