@@ -14,5 +14,4 @@ interface Game {
   genres: Genre[];
   publishers: Publisher[];
 }
-
 export default Game;
