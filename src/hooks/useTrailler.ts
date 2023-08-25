@@ -4,7 +4,8 @@ import APIClient from "../Services/api-client";
 
 const useTrailler = (gameId: number) => {
   const apiClient = new APIClient<GameTrailler>(`/games/${gameId}/movies`);
-  return useQuery(["trailler"], {
+  return useQuery({
+    queryKey: ["traillers", gameId],
     queryFn: apiClient.getAll,
   });
 };
